@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 
-import { Container, DivContainer } from "./style";
+import { Container, DivContainer, Eyes, Row, Hidden } from "./style";
 
 function App() {
+  const [hidden, setHidden] = useState("display");
+  const [show, setShow] = useState("");
   const [inputs, setInputs] = useState({});
+
+  function shwoPasswords() {
+    if (show === "display") {
+      setShow("");
+      setHidden("display");
+      document.forms[0].password.type = "text";
+    }
+    if (hidden === "display") {
+      setHidden("");
+      setShow("display");
+      document.forms[0].password.type = "password";
+    }
+  }
 
   function handleChange(e) {
     const name = e.target.name;
@@ -32,14 +47,25 @@ password: ${inputs.password}`);
             value={inputs.email || ""}
             onChange={handleChange}
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="input-style"
-            value={inputs.password || ""}
-            onChange={handleChange}
-          />
+          <Row>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="input-style"
+              value={inputs.password || ""}
+              onChange={handleChange}
+              id="password"
+            />
+            <div className="column">
+              <div id="hidden" className={hidden} onClick={shwoPasswords}>
+                <Hidden />
+              </div>
+              <div id="show" className={show} onClick={shwoPasswords}>
+                <Eyes />
+              </div>
+            </div>
+          </Row>
           <div className="input-btn">
             <input type="submit" value="enviar" className="btn" />
           </div>

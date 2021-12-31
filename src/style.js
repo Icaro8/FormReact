@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -99,5 +101,36 @@ export const DivContainer = styled.div`
     text-decoration: underline;
     text-decoration-color: #718e86;
     text-decoration-thickness: 2px;
+  }
+`;
+export const Eyes = styled(AiFillEye)`
+  color: #718e86;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+export const Hidden = styled(AiFillEyeInvisible)`
+  color: #718e86;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .display {
+    display: none;
   }
 `;
